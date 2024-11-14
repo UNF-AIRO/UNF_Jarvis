@@ -13,8 +13,11 @@ def getSpeech():
                 audio = r.listen(mic)
                 #convert audio to String
                 text = r.recognize_google(audio)
+                #convert text to lowercase
                 text = text.lower()
-                return text
+                #returns audio with primer command
+                if "jarvis" in text:
+                    return
         #make sure the program keeps looping if bad audio is given
         except sr.UnknownValueError:
             r = sr.Recognizer()

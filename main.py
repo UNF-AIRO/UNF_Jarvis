@@ -44,5 +44,10 @@ while True:
     )
     response = responses[0]
 
-    # response -> audio
-    s.speak(response)
+    # respone -> audio and play audio
+    s.speak(text)
+#<<<<<<< HEAD
+    
+#=======
+    # play audio
+#>>>>>>> c158f61f3263253e9165c6fb09d645c2c129fd56
