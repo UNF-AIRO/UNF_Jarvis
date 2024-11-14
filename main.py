@@ -25,6 +25,8 @@ TTS Set Up
 import detection as dc
 import Speech as s
 
+print("Working...")
+
 # main loop
 while True:
     # Listen for audio and convert to text
