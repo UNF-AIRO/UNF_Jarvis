@@ -11,6 +11,6 @@ while True:
 
     # get response from the assistant
 
-    # response -> audio
+    # response -> audio and play audio
     s.speak(text)
-    # play audio
+    
