@@ -18,17 +18,12 @@ jARVIS: Assistant_V2 = Assistant_V2(
 
 # main loop
 while True:
-    # Listen for audio
-
-    # audio -> text
-
+    # Listen for audio and convert to text
+    text = dc.getSpeech()
     # send text to the assistant
 
     # get response from the assistant
 
     # response -> audio
-
+    s.speak(text)
     # play audio
-    break
-
-print("Done")
