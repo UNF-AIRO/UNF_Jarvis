@@ -16,14 +16,27 @@ jARVIS: Assistant_V2 = Assistant_V2(
     id=environ['ASSISTANT_ID']
 )
 
+# Create a thread
+jARVIS.Create_Thread('MAIN_THREAD')
+
+"""
+TTS Set Up
+"""
+import detection as dc
+import Speech as s
+
 # main loop
 while True:
     # Listen for audio and convert to text
-    text = dc.getSpeech()
+    userInput = dc.getSpeech()
+
     # send text to the assistant
+    jARVIS.Create_Message(
+        threadName='MAIN_THREAD',
+        textContent=userInput
+    )
 
     # get response from the assistant
 
     # response -> audio
-    s.speak(text)
-    # play audio
+    s.speak(userInput)
