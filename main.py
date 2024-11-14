@@ -1,17 +1,16 @@
-import GetInput
-import speech
-import detection as dc
+from Assistant2 import Assistant, Language_Model
+from dotenv import load_dotenv
 
-if __name__ == "__main__":
-    speech.speak("Hello Sir if you need anything please just call my name")
-    while True:
-        start = dc.starting()
-        if start:
-            selections = dc.selection()
+# main loop
+while True:
+    # Listen for audio
 
-            if selections == "off":
-                speech.speak("Glab to help powering off")
-                break
+    # audio -> text
 
-        else:
-            continue
+    # send text to the assistant
+
+    # get response from the assistant
+
+    # response -> audio
+
+    # play audio
