@@ -37,6 +37,10 @@ while True:
     )
 
     # get response from the assistant
+    responses: list[str] = jARVIS.Static_Response(
+        threadName='MAIN_THREAD'
+    )
+    response = responses[0]
 
     # response -> audio
-    s.speak(userInput)
+    s.speak(response)
