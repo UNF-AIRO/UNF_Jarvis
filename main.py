@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 from os import environ
 load_dotenv()
 
+import detection as dc
+import TextToSpeech as s
+
 # Create an instance of the assistant
 jARVIS: Assistant_V2 = Assistant_V2(
     client=OpenAI(
@@ -22,10 +25,6 @@ jARVIS.Create_Thread('MAIN_THREAD')
 """
 TTS Set Up
 """
-import detection as dc
-import Speech as s
-
-print("Working...")
 
 # main loop
 while True:
@@ -44,10 +43,5 @@ while True:
     )
     response = responses[0]
 
-    # respone -> audio and play audio
-    s.speak(text)
-#<<<<<<< HEAD
-    
-#=======
-    # play audio
-#>>>>>>> c158f61f3263253e9165c6fb09d645c2c129fd56
+    # respone -> audio and play audio using openAI text to speach nova voice
+    s.speak(response)
