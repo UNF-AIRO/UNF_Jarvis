@@ -23,12 +23,12 @@ jARVIS.Create_Thread('MAIN_THREAD')
 TTS Set Up
 """
 import detection as dc
-import Speech as s
+import TextToSpeech as s
 
+"""
+Main Loop
+"""
 system('cls')
-print("Working...")
-
-# main loop
 while True:
     # Listen for audio and convert to text
     userInput = dc.getSpeech()
@@ -47,5 +47,5 @@ while True:
     response = responses[0]
     print(f"Jarvis: {response}\n")
 
-    # respone -> audio and play audio
+    # respone -> audio and play audio using openAI text to speach nova voice
     s.speak(response)
