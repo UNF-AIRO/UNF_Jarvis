@@ -1,8 +1,9 @@
-def multiply_numbers(a, b):
-    return a * b
+import math
+
+def vector_magnitude(vector):
+    return math.sqrt(sum(comp ** 2 for comp in vector))
 
 # Example usage:
-num1 = 6
-num2 = 7
-result = multiply_numbers(num1, num2)
-print(f'The result of multiplying {num1} and {num2} is: {result}')
+v = [3, 4, 5]
+magnitude = vector_magnitude(v)
+print("Magnitude of the vector is:", magnitude)

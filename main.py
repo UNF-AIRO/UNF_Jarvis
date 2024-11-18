@@ -99,6 +99,6 @@ while True:
     s.Speak(
         text=jARVIS.Static_Response(
             threadName='MAIN_THREAD'
-        )[0],
+        )[-1],
         client=OpenAI(api_key=environ['OPENAI_API_KEY'])
     )

@@ -14,13 +14,13 @@ def Get_Speech(micIndex: int) -> str:
                 r.adjust_for_ambient_noise(mic, duration=2)
 
                 # listen for speech and convert sound to text
-                text: str = r.recognize_google(r.listen(mic, timeout=5)).lower()
+                text: str = r.recognize_google(r.listen(mic)).lower()
 
                 # check if the user said "jarvis"
                 if "jarvis" in text:
                     return text
                 
-        except sr.WaitTimeoutError and sr.UnknownValueError:
+        except sr.UnknownValueError:
             # if speech is not detected, try again
             r = sr.Recognizer()
 
