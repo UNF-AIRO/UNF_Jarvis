@@ -5,7 +5,7 @@ Assistant Set Up
 from Assistant2 import Assistant_V2
 from openai import OpenAI
 from dotenv import load_dotenv
-from os import environ
+from os import environ, system
 load_dotenv()
 
 # Create an instance of the assistant
@@ -25,12 +25,14 @@ TTS Set Up
 import detection as dc
 import Speech as s
 
+system('cls')
 print("Working...")
 
 # main loop
 while True:
     # Listen for audio and convert to text
     userInput = dc.getSpeech()
+    print(f"User: {userInput}\n")
 
     # send text to the assistant
     jARVIS.Create_Message(
@@ -43,11 +45,7 @@ while True:
         threadName='MAIN_THREAD'
     )
     response = responses[0]
+    print(f"Jarvis: {response}\n")
 
     # respone -> audio and play audio
-    s.speak(text)
-#<<<<<<< HEAD
-    
-#=======
-    # play audio
-#>>>>>>> c158f61f3263253e9165c6fb09d645c2c129fd56
+    s.speak(response)
