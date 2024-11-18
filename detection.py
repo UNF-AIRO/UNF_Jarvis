@@ -1,24 +1,38 @@
 import speech_recognition as sr
 
-#method to detect speech from user
-def getSpeech():
+def Get_Speech(micIndex: int) -> str:
+    # create a speech recognizer
     r = sr.Recognizer()
 
+    # loop until speech is detected
     while True:
         try:
-            with sr.Microphone() as mic:
-                #remove abient noise from the audio
-                r.adjust_for_ambient_noise(mic, duration = 0.2)
-                #get audio input
-                audio = r.listen(mic)
-                #convert audio to String
-                text = r.recognize_google(audio)
-                #convert text to lowercase
-                text = text.lower()
-                #returns audio with primer command
+            # connect to the microphone
+            with sr.Microphone(micIndex) as mic:
+
+                # remove abient noise from the audio
+                r.adjust_for_ambient_noise(mic, duration=2)
+
+                # listen for speech and convert sound to text
+                text: str = r.recognize_google(r.listen(mic, timeout=5)).lower()
+
+                # check if the user said "jarvis"
                 if "jarvis" in text:
-                    return
-        #make sure the program keeps looping if bad audio is given
-        except sr.UnknownValueError:
+                    return text
+                
+        except sr.WaitTimeoutError and sr.UnknownValueError:
+            # if speech is not detected, try again
             r = sr.Recognizer()
-            continue
+
+def Select_Microphone() -> int:
+    # get all available microphones
+    microphones: list[str] = sr.Microphone.list_microphone_names()
+    # print the available microphones
+    for i, microphone in enumerate(microphones):
+        print(f"{i}: {microphone}")
+
+    # prompt the user to select a microphone
+    selectedMicrophone: int = int(input("Select a microphone: "))
+
+    # return the selected microphone
+    return selectedMicrophone

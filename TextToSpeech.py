@@ -1,18 +1,20 @@
-from pathlib import Path
 from openai import OpenAI
-from playsound import playsound
-client = OpenAI(api_key= '')
+from playsound3 import playsound
 
-def speak(text):
-    text = text.replace('nova','')
-    file_path = 'speech.mp3'
-    response = client.audio.speech.create(
-  model="tts-1",
-  voice="alloy",
-  input=text
-)
+def Speak(text: str, client: OpenAI) -> None:
 
-    response.stream_to_file(file_path)
-    playsound("speech.mp3")
-    playsound
+	# create a file path to save the audio file
+	file_path: str = 'speech.mp3'
 
+	# create a new audio file
+	response = client.audio.speech.create(
+		model="tts-1",
+		voice="onyx",
+		input=text
+	)
+
+	# save the audio file
+	response.stream_to_file(file_path)
+
+	# play the audio file
+	playsound(file_path)
